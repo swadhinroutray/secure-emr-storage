@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+    api:
+        build:
+            context: ../api
+            dockerfile: ../docker/api.dev.Dockerfile
+        container_name: EMR_API
+        restart: unless-stopped
+        networks:
+            - network
+        volumes:
+            - ../api:/usr/src/api
+        expose:
+            - 8080
+        ports:
+            - 8080:8080
+        env_file: ../.env
+        environment:
+            WAIT_HOSTS: db:27018,redis:6379
+            WAIT_HOSTS_TIMEOUT: 120
+    db:
+        image: mongo:latest
+        container_name: EMR_DB
+        volumes:
+            - ./data:/data/db
+        ports:
+            - '27018:27018'
+        networks:
+            - network
+
+    redis:
+        image: redis:alpine
+        container_name: EMR_REDIS
+        restart: unless-stopped
+        networks:
+            - network
+
+networks:
+    network:
+        driver: bridge

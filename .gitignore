@@ -102,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# API
+api/node_modules
+
+api/package-lock*
+web/client/package-lock*
+web/client/yarn.lock
+
+# Docker Constituents
+docker/data
