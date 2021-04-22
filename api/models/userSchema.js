@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-	employeeID: {
+	userID: {
 		type: String,
 	},
 	name: {
@@ -18,7 +18,6 @@ const userSchema = new mongoose.Schema({
 		required: true,
 	},
 	role: {
-		//Defining a common  as explained in the README
 		type: Number,
 		required: true,
 		default: 1,
@@ -28,8 +27,9 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	address: {
+	hospital: {
 		type: String,
+		required: true,
 	},
 	token: {
 		type: String,
@@ -37,3 +37,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const user = mongoose.model('user', userSchema);
+
+module.exports = {
+	user,
+};

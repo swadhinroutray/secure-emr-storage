@@ -4,7 +4,7 @@ async function hello(req, res) {
 		return response.sendResponse(res, 'Hello');
 	} catch (error) {
 		console.log(error);
-		return response.sendError(error);
+		return response.sendError(res, error);
 	}
 }
 

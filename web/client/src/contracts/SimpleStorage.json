@@ -32,15 +32,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/swadhinroutray/Desktop/secure-emr-storage/client/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/swadhinroutray/Desktop/secure-emr-storage/client/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x16e963c956ae0971c5c5eefbe19719795c8a540212b1ff7ea787a5114ecbf5ea\",\"urls\":[\"bzz-raw://fca7b038518245f47cad9c0c6ca4ddef8a43796ef4d485d74ab988b24edfae46\",\"dweb:/ipfs/QmYyF5gnuqP4BQPk6NkTXwniWeLMJkypGL54Qmqx5mBQ8G\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158207917dd5d79d2d4aec355e4c94bad93f4fcc7b17dd74241e9245466fc5f64204564736f6c63430005100032",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158207917dd5d79d2d4aec355e4c94bad93f4fcc7b17dd74241e9245466fc5f64204564736f6c63430005100032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/swadhinroutray/Desktop/secure-emr-storage/web/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/swadhinroutray/Desktop/secure-emr-storage/web/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x16e963c956ae0971c5c5eefbe19719795c8a540212b1ff7ea787a5114ecbf5ea\",\"urls\":[\"bzz-raw://fca7b038518245f47cad9c0c6ca4ddef8a43796ef4d485d74ab988b24edfae46\",\"dweb:/ipfs/QmYyF5gnuqP4BQPk6NkTXwniWeLMJkypGL54Qmqx5mBQ8G\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820f52f49ed15a691f2cc1d452cee1934b3859e3c1d9583272b05bb550b4e8e8fd664736f6c63430005100032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820f52f49ed15a691f2cc1d452cee1934b3859e3c1d9583272b05bb550b4e8e8fd664736f6c63430005100032",
   "sourceMap": "57:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:176:1;;;;;;;",
   "deployedSourceMap": "57:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:176:1;;;;;;;;;;;;;;;;;;;;;;;;105:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;105:53:1;;;;;;;;;;;;;;;;;:::i;:::-;;161:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;105:53;153:1;140:10;:14;;;;105:53;:::o;161:70::-;197:7;217:10;;210:17;;161:70;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.5.16;\n\ncontract SimpleStorage {\n\tuint256 storedData;\n\n\tfunction set(uint256 x) public {\n\t\tstoredData = x;\n\t}\n\n\tfunction get() public view returns (uint256) {\n\t\treturn storedData;\n\t}\n}\n",
-  "sourcePath": "/home/swadhinroutray/Desktop/secure-emr-storage/client/contracts/SimpleStorage.sol",
+  "sourcePath": "/home/swadhinroutray/Desktop/secure-emr-storage/web/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/home/swadhinroutray/Desktop/secure-emr-storage/client/contracts/SimpleStorage.sol",
+    "absolutePath": "/home/swadhinroutray/Desktop/secure-emr-storage/web/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         59
@@ -292,7 +292,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/home/swadhinroutray/Desktop/secure-emr-storage/client/contracts/SimpleStorage.sol",
+      "absolutePath": "/home/swadhinroutray/Desktop/secure-emr-storage/web/contracts/SimpleStorage.sol",
       "exportedSymbols": {
         "SimpleStorage": [
           59
@@ -593,12 +593,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xd28ffbff9350aA54B1Ae69d3eAAc58E9e87D601e",
-      "transactionHash": "0xdbdf3beaa7c644786730a61c60ab7cd5ee992d33e0890aa68fe103ab813ebd68"
+      "address": "0x22055fFDbd80130ef1Db663a2b0E0A728dd37284",
+      "transactionHash": "0xa5ac96f843fbee5c65c0b9906ac36af823827c06880001cd5b0dbfe9770d1e11"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-12T15:23:20.891Z",
+  "updatedAt": "2021-04-20T12:19:35.027Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

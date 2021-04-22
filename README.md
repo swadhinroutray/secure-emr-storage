@@ -2,7 +2,7 @@
 
 <hr>
 
-<p>Secure EMR(Electronic Medical Record) storage on an IPFS (Interplanetary File System) while maintaining a database for secure handling of data using Ethereum Blockchain nodes, Infuria IPFS nodes, Ganache as ethereum account providers & metamask as ether transaction agent and Truffle framework for client side development using the web3 package. </p>
+<p>Secure EMR(Electronic Medical Record) storage on an IPFS (Interplanetary File System) while maintaining a database for secure handling of data using Ethereum Blockchain nodes, Infura IPFS nodes, Ganache as ethereum account providers & metamask as ether transaction agent and Truffle framework for client side development using the web3 package. </p>
 
 ## To get started:
 
