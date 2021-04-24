@@ -32,7 +32,6 @@ async function Register(req, res) {
 }
 async function Login(req, res) {
 	try {
-		// console.log(req.session)
 		if (req.session.logged_in == undefined || !req.session.logged_in) {
 			result = await user.findOne({ email: req.body.email.trim() });
 			// console.log(result)
@@ -50,12 +49,10 @@ async function Login(req, res) {
 				if (!resultVal)
 					return response.sendResponse(res, 'Invalid Password');
 				else {
-					//console.log(query);
 					req.session.email = req.body.email;
 					req.session.name = result.name;
 					req.session.logged_in = true;
 					req.session.userID = result.userID;
-					req.session.contact = result.contact;
 					// console.log(req.session);
 					req.session.save(() => {
 						response.sendResponse(res, result);

@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-const recordSchema = new mongoose.Schema({
-	recordID: {
-		type: String,
-		required: true,
-	},
+const patientSchema = new mongoose.Schema({
 	patientID: {
 		type: String,
 		required: true,
@@ -13,18 +9,24 @@ const recordSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	recordName: {
+	email: {
 		type: String,
 		required: true,
 	},
-	transactionHash: {
-		//! Encrypted using AES technology
+	contact: {
 		type: String,
 		required: true,
+	},
+	bloodGroup: {
+		type: String,
+		required: true,
+	},
+	birthday: {
+		type: String,
 	},
 });
 
-const record = mongoose.model('records', recordSchema);
+const patient = mongoose.model('patients', patientSchema);
 module.exports = {
-	record,
+	patient,
 };
