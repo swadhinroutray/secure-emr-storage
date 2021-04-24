@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const hello = require('../controllers/hello');
 const auth = require('../controllers/auth');
+const patient = require('../controllers/storage/patientRecords');
 function isLoggedin(req, res, next) {
 	if (req.session) {
 		if (req.session.logged_in == true) {
@@ -20,5 +21,9 @@ router.get('/hello', hello.hello);
 router.post('/register', auth.Register);
 router.post('/login', auth.Login);
 router.get('/logout', isLoggedin, auth.Logout);
+
+//* Patient Routes
+router.post('/addpatientrecord', isLoggedin, patient.addPatientRecord);
+router.post('/plainhash', isLoggedin, patient.getPlaintext);
 
 module.exports = router;
