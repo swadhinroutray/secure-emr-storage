@@ -1,7 +1,7 @@
 const { patient } = require('../../models/patientSchema');
 const response = require('../../utils/response');
 const { uuid } = require('uuidv4');
-
+const { Log } = require('../activity');
 async function registerPatient(req, res) {
 	try {
 		const patientID = uuid();
@@ -23,6 +23,11 @@ async function registerPatient(req, res) {
 		if (!result) {
 			return response.sendError(res, 'An error Occured');
 		}
+		await Log(
+			req.session.userID,
+			req.session.name,
+			'Added a patient with ID: ' + patientID
+		);
 		return response.sendResponse(res, result);
 	} catch (error) {
 		response.sendError(res, error);
@@ -47,7 +52,24 @@ async function fetchPatients(req, res) {
 		response.sendError(res, error);
 	}
 }
+async function fetchPatientDetails(req, res) {
+	try {
+		const patientID = req.params.patientID;
+
+		result = await patient.findOne({
+			patientID: patientID,
+		});
+
+		if (!result) {
+			return response.sendError(res, 'An error Occured');
+		}
+		response.sendResponse(res, result);
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
 module.exports = {
 	fetchPatients,
 	registerPatient,
+	fetchPatientDetails,
 };

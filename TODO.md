@@ -10,7 +10,7 @@
 
 ##### Storage
 
--   [x] Schema Creation of Database Collections: Record and
+-   [x] Schema Creation of Database Collections: Record, users and
 -   [x] Authentication of users
 -   [x] Record Storage
 -   [ ] Record access: Only possible when Client done
@@ -18,13 +18,13 @@
 -   [x] Encryption & Decryption of the data using AES Scheme
 -   [x] Return name of Patients for search bar implementation
 -   [x] Add Patient to the patients database
--   [ ] Retrieve Data based on patient ID
--   [ ] Retrieve data for patient profile
+-   [x] Retrieve records based on patient ID
+-   [x] Retrieve data for patient profile
 
 ##### Accessibility
 
--   [ ] Role Accessibility for Admins,
--   [ ] Registeration of doctors only by Admin,
+-   [ ] Role Accessibility for Admins
+-   [ ] Registeration of doctors only by Admin
 -   [ ] Request for access from other hosital
 -   [ ] Approval of request
 -   [ ] Add and remove doctors/Nurses from the DB

@@ -2,6 +2,7 @@ const { record } = require('../../models/recordSchema');
 var crypto = require('crypto-js');
 const { uuid } = require('uuidv4');
 const response = require('../../utils/response');
+const { Log } = require('../activity');
 
 async function AESencryption(hash) {
 	const cipherText = await crypto.AES.encrypt(
@@ -26,11 +27,12 @@ async function addPatientRecord(req, res) {
 		const recordName = req.body.recordName;
 		const transactionHash = req.body.transactionHash;
 		const hospital = req.body.hospital;
+		const recordID = uuid();
 		//! Creation of encrypted Hash
 
 		const encryptedHash = await AESencryption(transactionHash);
 		const newRecord = new record({
-			recordID: uuid(),
+			recordID: recordID,
 			patientID: patientID,
 			name: name,
 			recordName: recordName,
@@ -42,6 +44,11 @@ async function addPatientRecord(req, res) {
 		if (!result) {
 			return response.sendError(res, 'An error Occured');
 		}
+		await Log(
+			req.session.userID,
+			req.session.name,
+			'Added a patient record with ID: ' + recordID
+		);
 		return response.sendResponse(res, result);
 	} catch (error) {
 		response.sendError(res, error);
@@ -63,7 +70,29 @@ async function removeRecord(req, res) {
 		if (!result) {
 			return response.sendError(res, 'An error Occured');
 		}
+		await Log(
+			req.session.userID,
+			req.session.name,
+			'Removed a patient record with ID: ' + recordID
+		);
 		return response.sendResponse(res, 'Record Deleted Successfully');
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
+
+async function getPatientRecords(req, res) {
+	try {
+		const patientID = req.params.patientID;
+
+		result = await record.find({
+			patientID: patientID,
+		});
+		if (!result) {
+			return response.sendError(res, 'An error Occured');
+		}
+
+		return response.sendResponse(res, result);
 	} catch (error) {
 		response.sendError(res, error);
 	}
@@ -72,4 +101,5 @@ module.exports = {
 	addPatientRecord,
 	getPlaintext,
 	removeRecord,
+	getPatientRecords,
 };

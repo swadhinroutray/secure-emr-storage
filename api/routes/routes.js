@@ -28,9 +28,11 @@ router.get('/logout', isLoggedin, auth.Logout);
 router.post('/addpatientrecord', isLoggedin, patientRecord.addPatientRecord);
 router.post('/plainhash', isLoggedin, patientRecord.getPlaintext);
 router.post('/removerecord', isLoggedin, patientRecord.removeRecord);
+router.get('/records/:patientID', isLoggedin, patientRecord.getPatientRecords);
 
 //* Patient Records
 router.post('/registerpatient', isLoggedin, patient.registerPatient);
 router.get('/patientlist', isLoggedin, patient.fetchPatients);
+router.get('/patient/:patientID', isLoggedin, patient.fetchPatientDetails);
 
 module.exports = router;
