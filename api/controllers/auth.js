@@ -20,7 +20,7 @@ async function Register(req, res) {
 
 			var result = await newUser.save();
 			if (!result) {
-				return response.sendError(res, e);
+				return response.sendError(res, 'error');
 			}
 			//   console.log(result);
 			return response.sendResponse(res, newUser);
@@ -73,7 +73,22 @@ async function Logout(req, res) {
 	try {
 		await req.session.destroy();
 		return response.sendResponse(res, 'Logged Out Successfully');
-	} catch (error) {
+	} catch (e) {
+		console.log(e);
+		return response.sendError(res, e);
+	}
+}
+
+async function init(req, res) {
+	try {
+		result = await user.findOne({
+			userID: req.session.userID,
+		});
+		if (!result) {
+			return response.sendError(res, 'No Initialisation');
+		}
+		return response.sendResponse(res, result);
+	} catch (e) {
 		console.log(e);
 		return response.sendError(res, e);
 	}
@@ -83,4 +98,5 @@ module.exports = {
 	Register,
 	Login,
 	Logout,
+	init,
 };

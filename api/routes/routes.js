@@ -23,6 +23,7 @@ router.get('/hello', hello.hello);
 router.post('/register', auth.Register);
 router.post('/login', auth.Login);
 router.get('/logout', isLoggedin, auth.Logout);
+router.get('/init', isLoggedin, auth.init);
 
 //* Patient Record Routes
 router.post('/addpatientrecord', isLoggedin, patientRecord.addPatientRecord);
