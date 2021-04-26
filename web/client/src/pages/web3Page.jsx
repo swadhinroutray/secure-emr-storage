@@ -4,7 +4,10 @@ import getWeb3 from './getWeb3';
 
 class Web3Page extends Component {
 	state = { storageValue: 0, web3: null, accounts: null, contract: null };
-
+	constructor(props) {
+		super(props);
+		this.runExample = this.runExample.bind(this);
+	}
 	componentDidMount = async () => {
 		try {
 			// Get network provider and web3 instance.
@@ -25,8 +28,8 @@ class Web3Page extends Component {
 			// Set web3, accounts, and contract to the state, and then proceed with an
 			// example of interacting with the contract's methods.
 			this.setState(
-				{ web3, accounts, contract: instance },
-				this.runExample
+				{ web3, accounts, contract: instance }
+				// this.runExample
 			);
 		} catch (error) {
 			// Catch any errors for any of the above operations.
@@ -45,7 +48,7 @@ class Web3Page extends Component {
 
 		// Get the value from the contract to prove it worked.
 		const response = await contract.methods.get().call();
-
+		console.log(response);
 		// Update state with the result.
 		this.setState({ storageValue: response });
 	};
@@ -67,6 +70,7 @@ class Web3Page extends Component {
 					Try changing the value stored on <strong>line 40</strong> of
 					App.js.
 				</p>
+				<button onClick={this.runExample}>Run Transaction</button>
 				<div>The stored value is: {this.state.storageValue}</div>
 			</div>
 		);
