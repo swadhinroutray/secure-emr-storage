@@ -17,11 +17,13 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://swadhinroutray.com">
+			<a
+				style={{ textDecoration: 'none' }}
+				color="inherit"
+				href="https://www.swadhinroutray.com"
+			>
 				Swadhin Routray
-			</Link>{' '}
-			{new Date().getFullYear()}
-			{'.'}
+			</a>
 		</Typography>
 	);
 }
@@ -63,8 +65,13 @@ const LoginForm = inject('loginStore')(
 		}, [loginStore, primaryCheck]);
 		const classes = useStyles();
 
+		console.log(loginStore.profile.role);
 		return loginStore.loggedIn == true ? (
-			<Redirect to="/home" />
+			loginStore.profile.role == 1 ? (
+				<Redirect to="/admin/home" />
+			) : (
+				<Redirect to="/home" />
+			)
 		) : (
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />

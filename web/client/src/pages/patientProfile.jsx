@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import Navbar from '../components/Navbar';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import {
 	TextField,
 	Button,
@@ -37,38 +37,60 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: theme.spacing(4),
 	},
 }));
-const Home = inject('loginStore')(
-	observer(({ loginStore }) => {
+const PatientProfile = inject(
+	'patientStore',
+	'loginStore'
+)(
+	observer(({ loginStore, patientStore }, props) => {
 		const [primaryCheck, setPrimaryCheck] = useState(false);
 		const classes = useStyles();
-
+		const { patientID } = useParams();
+		console.log(patientID);
 		useEffect(() => {
 			if (!primaryCheck) {
 				setPrimaryCheck(true);
 				loginStore.getProfile();
 			}
 		}, [loginStore, primaryCheck]);
-		return loginStore.profileSet ? (
+
+		useEffect(() => {
+			patientStore.setPatientModel(patientID);
+		}, [patientStore]);
+
+		useEffect(() => {
+			patientStore.getPatientRecords(patientID);
+		}, [patientStore]);
+
+		useEffect(() => {
+			console.log(patientStore.records);
+		}, [patientStore]);
+
+		return patientStore.patientSet && patientStore.recordSet ? (
 			<div>
 				<Navbar />
 
 				<Container component="main" maxWidth="s" alignItems="center">
 					<CssBaseline />
-					<div className={classes.paper}>
-						<Web3Page />
-					</div>
+					<div className={classes.paper}>Hello</div>
 				</Container>
 			</div>
 		) : (
-			<Loader
-				type="Puff"
-				color="#00BFFF"
-				height={100}
-				width={100}
-				timeout={3000}
-			/>
+			<div>
+				<Navbar />
+				<Container component="main" maxWidth="s" alignItems="center">
+					<CssBaseline />
+					<div className={classes.paper}>
+						<Loader
+							type="Puff"
+							color="#00BFFF"
+							height={100}
+							width={100}
+							timeout={3000}
+						/>
+					</div>
+				</Container>
+			</div>
 		);
 	})
 );
-Home.displayName = 'Home Component';
-export default Home;
+export default PatientProfile;

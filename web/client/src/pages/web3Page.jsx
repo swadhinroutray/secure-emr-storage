@@ -41,11 +41,20 @@ class Web3Page extends Component {
 	};
 
 	runExample = async () => {
-		const { accounts, contract } = this.state;
+		const { accounts, contract, web3 } = this.state;
 
 		// Stores a given value, 5 by default.
-		await contract.methods.set(10).send({ from: accounts[0] });
-
+		var hashData;
+		await contract.methods
+			.set(10)
+			.send({ from: accounts[0] })
+			.on('transactionHash', function (hash) {
+				console.log(hash);
+				hashData = hash;
+			});
+		console.log(hashData);
+		const data = await web3.eth.getTransaction(hashData);
+		console.log(data);
 		// Get the value from the contract to prove it worked.
 		const response = await contract.methods.get().call();
 		console.log(response);

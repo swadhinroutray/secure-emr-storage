@@ -67,8 +67,8 @@ class loginModel {
 	};
 
 	postLogin = (res) => {
-		console.log(res.data);
-
+		// console.log(res.data);
+		// this.loading = true;
 		if (res.success && res.data !== 'User Not Logged in') {
 			const { userID, name, email, contact, hospital, role } = res.data;
 
@@ -80,7 +80,6 @@ class loginModel {
 			this.profile.role = role;
 			this.loggedIn = true;
 			this.profileSet = true;
-
 			// window.location = '/home';
 			return;
 		}
@@ -128,7 +127,9 @@ class loginModel {
 }
 
 const loginStore = new loginModel();
-var disposer = autorun(() => console.log(loginStore.loggedIn));
+var disposer = autorun(() =>
+	console.log(loginStore.loggedIn, loginStore.profileSet)
+);
 
 export default loginStore;
 const loginValidator = {

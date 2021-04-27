@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: theme.spacing(4),
 	},
 }));
-const Home = inject('loginStore')(
+const AdminHome = inject('loginStore')(
 	observer(({ loginStore }) => {
 		const [primaryCheck, setPrimaryCheck] = useState(false);
 		const classes = useStyles();
@@ -55,20 +55,11 @@ const Home = inject('loginStore')(
 				<Container component="main" maxWidth="s" alignItems="center">
 					<CssBaseline />
 					<div className={classes.paper}>
-						<Web3Page />
+						<h1>Hello Admin</h1>
 					</div>
 				</Container>
 			</div>
-		) : (
-			<Loader
-				type="Puff"
-				color="#00BFFF"
-				height={100}
-				width={100}
-				timeout={3000}
-			/>
-		);
+		) : null;
 	})
 );
-Home.displayName = 'Home Component';
-export default Home;
+export default AdminHome;

@@ -18,6 +18,15 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
+	home: {
+		marginTop: '8px',
+		alignItems: 'center',
+		marginRight: '10px',
+	},
+	patients: {
+		marginTop: '8px',
+		alignItems: 'center',
+	},
 	grow: {
 		flexGrow: 1,
 	},
@@ -25,10 +34,12 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(2),
 	},
 	title: {
-		display: 'none',
-		[theme.breakpoints.up('sm')]: {
-			display: 'block',
-		},
+		// display: 'none',
+		// [theme.breakpoints.up('sm')]: {
+		// 	display: 'block',
+		// },
+		flexGrow: 0,
+		alignItems: 'center',
 	},
 	search: {
 		position: 'relative',
@@ -68,10 +79,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	sectionDesktop: {
-		display: 'none',
+		display: 'flex',
 		[theme.breakpoints.up('md')]: {
 			display: 'flex',
 		},
+		// margin: '12px',
 	},
 	sectionMobile: {
 		display: 'flex',
@@ -175,18 +187,19 @@ const Navbar = inject('loginStore')(
 			<div className={classes.grow}>
 				<AppBar position="static">
 					<Toolbar>
-						<IconButton
+						{/* <IconButton
 							edge="start"
 							className={classes.menuButton}
 							color="inherit"
 							aria-label="open drawer"
 						>
 							<MenuIcon />
-						</IconButton>
+						</IconButton> */}
 						<Typography
 							className={classes.title}
-							variant="h6"
+							variant="h4"
 							noWrap
+							align="center"
 						>
 							EMR Storage
 						</Typography>
@@ -205,12 +218,48 @@ const Navbar = inject('loginStore')(
 						</div> */}
 						<div className={classes.grow} />
 						<div className={classes.sectionDesktop}>
-							<IconButton color="inherit">
-								<MailIcon />
-							</IconButton>
-							<IconButton color="inherit">
+							<Link
+								style={{
+									textDecoration: 'none',
+									color: 'white',
+								}}
+								to="/home"
+								color="inherit"
+								justifyContent="center"
+							>
+								<Typography
+									className={classes.home}
+									color="inherit"
+									variant="h5"
+									noWrap
+									align="center"
+								>
+									Home
+								</Typography>
+							</Link>
+							<Link
+								style={{
+									textDecoration: 'none',
+									color: 'white',
+								}}
+								to="/patients"
+								color="inherit"
+								justifyContent="center"
+							>
+								<Typography
+									className={classes.patients}
+									color="inherit"
+									variant="h5"
+									noWrap
+									align="center"
+								>
+									Patients
+								</Typography>
+							</Link>
+
+							{/* <IconButton color="inherit">
 								<NotificationsIcon />
-							</IconButton>
+							</IconButton> */}
 							<IconButton
 								edge="end"
 								aria-label="account of current user"

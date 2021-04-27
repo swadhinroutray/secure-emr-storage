@@ -9,6 +9,7 @@
     "mobx-react": "^7.1.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
+    "react-loader-spinner": "^4.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
