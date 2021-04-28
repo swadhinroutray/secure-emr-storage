@@ -22,7 +22,7 @@ class loginModel {
 	profile = {};
 	profileSet = false;
 	loggedIn = false;
-
+	loading = true;
 	setField = (field, val) => {
 		this[field].value = val;
 		// console.log(this[field].value);
@@ -80,6 +80,7 @@ class loginModel {
 			this.profile.role = role;
 			this.loggedIn = true;
 			this.profileSet = true;
+			this.loading = false;
 			// window.location = '/home';
 			return;
 		}
@@ -90,6 +91,7 @@ class loginModel {
 		if (res.data === 'Invalid Credentials') {
 			this.setMessage('Invalid Credentials');
 		}
+		this.loading = false;
 		return;
 	};
 
@@ -102,6 +104,7 @@ class loginModel {
 		if (res.success) {
 			this.loggedIn = false;
 			this.profileSet = false;
+			this.loading = false;
 		}
 		// window.location = '/login';
 	};
@@ -122,14 +125,13 @@ class loginModel {
 			logout: action,
 			logoutControl: action,
 			getProfile: action,
+			loading: observable,
 		});
 	}
 }
 
 const loginStore = new loginModel();
-var disposer = autorun(() =>
-	console.log(loginStore.loggedIn, loginStore.profileSet)
-);
+var disposer = autorun(() => console.log(loginStore.loggedIn));
 
 export default loginStore;
 const loginValidator = {

@@ -242,6 +242,25 @@ const Navbar = inject('loginStore')(
 									textDecoration: 'none',
 									color: 'white',
 								}}
+								to="/register"
+								color="inherit"
+								justifyContent="center"
+							>
+								<Typography
+									className={classes.home}
+									color="inherit"
+									variant="h5"
+									noWrap
+									align="center"
+								>
+									Register
+								</Typography>
+							</Link>
+							<Link
+								style={{
+									textDecoration: 'none',
+									color: 'white',
+								}}
 								to="/patients"
 								color="inherit"
 								justifyContent="center"

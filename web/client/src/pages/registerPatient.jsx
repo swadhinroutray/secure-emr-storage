@@ -12,6 +12,9 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import { get, post } from '../utils/api';
+import { toast } from 'react-toastify';
+import Navbar from '../components/Navbar';
 
 function Copyright() {
 	return (
@@ -50,28 +53,44 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const LoginForm = inject('loginStore')(
-	observer(({ loginStore }) => {
-		console.log(loginStore.loggedIn);
-		const [primaryCheck, setPrimaryCheck] = useState(false);
-		useEffect(() => {
-			if (!primaryCheck) {
-				setPrimaryCheck(true);
-				loginStore.getProfile();
-				// if (loginStore.loggedIn == false) {
-				// 	return <Redirect to="/login" />;
-				// }
-			}
-		}, [loginStore, primaryCheck]);
-		const classes = useStyles();
+const RegisterPatitentForm = () => {
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [birthday, setBirthday] = useState('');
+	const [contact, setContact] = useState('');
+	const [BG, setBG] = useState('');
 
-		return loginStore.loggedIn == true ? (
-			loginStore.profile.role == 1 ? (
-				<Redirect to="/admin/home" />
-			) : (
-				<Redirect to="/home" />
-			)
-		) : (
+	const handleClick = async () => {
+		const postData = {
+			name: name,
+			email: email,
+			contact: contact,
+			birthday: birthday,
+			bloodGroup: BG,
+		};
+		post(`/api/registerpatient`, postData).then((res) => {
+			console.log(res);
+
+			if (res.success) {
+				toast('Registered Successfully', {
+					position: 'top-right',
+					autoClose: 4000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				return;
+			}
+		});
+	};
+	const classes = useStyles();
+
+	return (
+		<div>
+			<Navbar />
+
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<div className={classes.paper}>
@@ -87,9 +106,21 @@ const LoginForm = inject('loginStore')(
 					</Typography>
 
 					<Typography component="h1" variant="h5">
-						Sign in
+						Register Patient
 					</Typography>
 					<form className={classes.form} noValidate>
+						<TextField
+							variant="outlined"
+							margin="normal"
+							required
+							fullWidth
+							name="Name"
+							label="Name"
+							type="Name"
+							id="Name"
+							autoComplete="Name"
+							onChange={(e) => setName(e.target.value)}
+						/>
 						<TextField
 							variant="outlined"
 							margin="normal"
@@ -100,36 +131,54 @@ const LoginForm = inject('loginStore')(
 							name="email"
 							autoComplete="email"
 							autoFocus
-							onChange={(e) =>
-								loginStore.setField('email', e.target.value)
-							}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
-						<Typography>{loginStore['email'].error}</Typography>
 						<TextField
 							variant="outlined"
 							margin="normal"
 							required
 							fullWidth
-							name="password"
-							label="Password"
-							type="password"
-							id="password"
-							autoComplete="current-password"
-							onChange={(e) =>
-								loginStore.setField('password', e.target.value)
-							}
+							id="contact"
+							label="Contact"
+							name="contact"
+							autoComplete="contact"
+							autoFocus
+							onChange={(e) => setContact(e.target.value)}
 						/>
-						<Typography>{loginStore['password'].error}</Typography>
+						<TextField
+							variant="outlined"
+							margin="normal"
+							required
+							fullWidth
+							id="birthday"
+							label="Birthday"
+							name="birthday"
+							autoComplete="birthday"
+							autoFocus
+							onChange={(e) => setBirthday(e.target.value)}
+						/>
 
+						<TextField
+							variant="outlined"
+							margin="normal"
+							required
+							fullWidth
+							id="bloodGroup"
+							label="Blood Group"
+							name="bloodGroup"
+							autoComplete="bloodGroup"
+							autoFocus
+							onChange={(e) => setBG(e.target.value)}
+						/>
 						<Button
 							type="submit"
 							fullWidth
 							variant="contained"
 							color="primary"
 							className={classes.submit}
-							onClick={() => loginStore.login()}
+							onClick={handleClick}
 						>
-							Sign In
+							Register
 						</Button>
 					</form>
 				</div>
@@ -137,8 +186,8 @@ const LoginForm = inject('loginStore')(
 					<Copyright />
 				</Box>
 			</Container>
-		);
-	})
-);
+		</div>
+	);
+};
 
-export default LoginForm;
+export default RegisterPatitentForm;

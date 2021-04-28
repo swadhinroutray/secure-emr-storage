@@ -5,6 +5,7 @@ import {
 	validateWithError,
 	chainValidations,
 } from '../utils/validation';
+import { toast } from 'react-toastify';
 
 class patientModel {
 	name = {
@@ -36,6 +37,7 @@ class patientModel {
 	records = [];
 	patientSet = false;
 	recordSet = false;
+	successful = false;
 	setField = (field, val) => {
 		this[field].value = val;
 		// console.log(this[field].value);
@@ -75,9 +77,9 @@ class patientModel {
 		console.log(res.data);
 		this.records = res.data;
 		this.recordSet = true;
-		// console.log(this.records);
 		return;
 	};
+	//
 	constructor() {
 		makeObservable(this, {
 			email: observable,

@@ -11,7 +11,6 @@ import {
 	Typography,
 	Container,
 } from '@material-ui/core';
-import Web3Page from './web3Page';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
 import PatientCard from '../components/patientCard';
@@ -45,12 +44,6 @@ const Patients = inject('loginStore')(
 		const classes = useStyles();
 		const [patients, setPatients] = useState({ success: false, data: [] });
 		const [loading, setLoading] = useState(true);
-		// const fetchPatients = async () => {
-		// 	get('/api/patientlist').then((data) => {
-		// 		setPatients(data);
-		// 		console.log(patients);
-		// 	});
-		// };
 		useEffect(() => {
 			if (!primaryCheck) {
 				setPrimaryCheck(true);
@@ -66,24 +59,12 @@ const Patients = inject('loginStore')(
 			});
 		}, []);
 
-		useEffect(() => {
-			console.log(patients);
-			// setLoading(false);
-		}, [patients]);
 		const renderCards = (patients) => {
 			const data = patients.data;
 
 			console.log(data[0]);
 			const indents = [];
-			// data.forEach((key, entity) => {
-			// 	return (
-			// 		<PatientCard
-			// 			key={key}
-			// 			name={entity._id.name}
-			// 			patientID={entity._id.patientID}
-			// 		/>
-			// 	);
-			// });
+
 			for (let index = 0; index < data.length; index++) {
 				indents.push(
 					<PatientCard
@@ -124,7 +105,9 @@ const Patients = inject('loginStore')(
 								</div>
 							</Container>
 						) : (
-							renderCards(patients)
+							<div className={classes.paper}>
+								{renderCards(patients)}
+							</div>
 						)}
 					</div>
 				</Container>

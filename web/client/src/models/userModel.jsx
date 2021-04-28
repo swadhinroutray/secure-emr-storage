@@ -94,7 +94,6 @@ class userModel {
 			password: this.password.value.trim(),
 			email: this.email.value.trim(),
 			contact: this.contact.value.trim(),
-			college: this.college.value.trim(),
 			hospital: this.hospital.value.trim(),
 			role: this.role.value,
 		};
