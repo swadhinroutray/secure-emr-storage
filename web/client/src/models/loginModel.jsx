@@ -61,7 +61,6 @@ class loginModel {
 			password: this.password.value.trim(),
 			email: this.email.value.trim(),
 		};
-		console.log('login hit');
 
 		post(`/api/login`, postData).then(this.postLogin);
 	};

@@ -10,6 +10,7 @@ services:
             - network
         volumes:
             - ../api:/usr/src/api
+            - ../uploads:/usr/src/api/uploads
         expose:
             - 8080
         ports:

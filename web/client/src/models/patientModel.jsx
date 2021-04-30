@@ -1,11 +1,5 @@
-import { makeObservable, observable, action, autorun } from 'mobx';
-import { get, post } from '../utils/api';
-import {
-	validateRequired,
-	validateWithError,
-	chainValidations,
-} from '../utils/validation';
-import { toast } from 'react-toastify';
+import { makeObservable, observable, action } from 'mobx';
+import { get } from '../utils/api';
 
 class patientModel {
 	name = {

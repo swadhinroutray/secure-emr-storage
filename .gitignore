@@ -109,6 +109,7 @@ api/node_modules
 api/package-lock*
 web/client/package-lock*
 web/client/yarn.lock
+web/client/src/env.json
 
 # Docker Constituents
 docker/data

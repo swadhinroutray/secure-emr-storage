@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import Navbar from '../components/Navbar';
-import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
-import {
-	TextField,
-	Button,
-	Avatar,
-	CssBaseline,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
-import Web3Page from './web3Page';
+import { useParams } from 'react-router-dom';
+import { CssBaseline, Typography, Container } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
 import RecordCard from '../components/recordCard';

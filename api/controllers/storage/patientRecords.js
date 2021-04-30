@@ -13,6 +13,7 @@ async function AESencryption(hash) {
 	return cipherText;
 }
 async function AESdecryption(hash) {
+	console.log(hash);
 	const bytesText = await crypto.AES.decrypt(
 		hash,
 		process.env.AES_SECRET_KEY
@@ -27,7 +28,7 @@ async function addPatientRecord(req, res) {
 		const recordName = req.body.recordName;
 		const transactionHash = req.body.transactionHash;
 		const hospital = req.body.hospital;
-		const recordID = uuid();
+		const recordID = req.body.recordID;
 		//! Creation of encrypted Hash
 
 		const encryptedHash = await AESencryption(transactionHash);
@@ -97,9 +98,40 @@ async function getPatientRecords(req, res) {
 		response.sendError(res, error);
 	}
 }
+
+async function getRecordAndReturnHash(req, res) {
+	try {
+		const recordID = req.params.recordID;
+		result = await record.findOne({
+			recordID: recordID,
+		});
+		if (!result) {
+			return response.sendError(res, 'An error Occured');
+		}
+
+		response.sendResponse(res, result.transactionHash);
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
+
+async function retrieveRecordFromIPFS(req, res) {
+	try {
+		const encryptedIPFShash = req.body.hash;
+		console.log(encryptedIPFShash);
+		const decryptedIPFShash = await AESdecryption(encryptedIPFShash);
+		const IPFS_URL = process.env.IPFS_BASE_URL + '/' + decryptedIPFShash;
+		const encryptedURL = await AESencryption(IPFS_URL);
+		response.sendResponse(res, encryptedURL);
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
 module.exports = {
 	addPatientRecord,
 	getPlaintext,
 	removeRecord,
 	getPatientRecords,
+	getRecordAndReturnHash,
+	retrieveRecordFromIPFS,
 };
