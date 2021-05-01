@@ -16,6 +16,11 @@ import { AdminRoute } from './AdminRoute';
 
 import Home from '../pages/home';
 import RegisterPatitentForm from '../pages/registerPatient';
+import RequestAccessPage from '../pages/requestAccessPage';
+import AdminRegisterPage from '../pages/adminRegisterPage';
+import AdminRequestsPage from '../pages/adminRequestsPage';
+import AdminActivityPage from '../pages/adminActivityPage';
+
 import {
 	TextField,
 	Button,
@@ -83,6 +88,27 @@ const AppRouter = inject('loginStore')(
 				) : (
 					<Switch>
 						<Route path={'/login'} component={LoginForm} />
+						<Route
+							path={'/requestaccess'}
+							component={RequestAccessPage}
+						/>
+						<AdminRoute
+							path={'/admin/home'}
+							component={AdminHome}
+						/>
+						<AdminRoute
+							path={'/admin/register'}
+							component={AdminRegisterPage}
+						/>
+						<AdminRoute
+							path={'/admin/requests'}
+							component={AdminRequestsPage}
+						/>
+						/>
+						<AdminRoute
+							path={'/admin/activity'}
+							component={AdminActivityPage}
+						/>
 						<PrivateRoute path={'/home'} component={Home} />
 						<PrivateRoute path={'/web3'} component={Web3Page} />
 						<PrivateRoute
@@ -94,12 +120,6 @@ const AppRouter = inject('loginStore')(
 							path={'/:patientID'}
 							component={PatientProfile}
 						/>
-
-						<AdminRoute
-							path={'/admin/home'}
-							component={AdminHome}
-						/>
-
 						<Route exact path={'/'} component={LoginForm} />
 					</Switch>
 				)}

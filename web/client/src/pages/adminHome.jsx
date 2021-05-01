@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
-import Navbar from '../components/Navbar';
+import AdminNavbar from '../components/adminNavbar';
 import {
 	TextField,
 	Button,
@@ -47,7 +47,7 @@ const AdminHome = inject('loginStore')(
 		}, [loginStore, primaryCheck]);
 		return loginStore.profileSet ? (
 			<div>
-				<Navbar />
+				<AdminNavbar />
 
 				<Container component="main" maxWidth="s" alignItems="center">
 					<CssBaseline />

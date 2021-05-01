@@ -8,6 +8,9 @@ const multer = require('multer');
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 const tempHandler = require('../controllers/storage/tempFileHandler');
+const ar = require('../controllers/accessibility/adminRequests');
+const access = require('../controllers/accessibility/userAccess');
+
 function isLoggedin(req, res, next) {
 	if (req.session) {
 		if (req.session.logged_in == true) {
@@ -54,5 +57,12 @@ router.post(
 );
 router.post('/remove', isLoggedin, tempHandler.deleteTempFile);
 router.post('/buffer', isLoggedin, tempHandler.fetchBuffer);
+
+//* Admin controllers
+router.post('/requestaccess', ar.addAdminRequest);
+router.get('/getrequests', isLoggedin, ar.getAdminRequests);
+
+//* Access Controllers
+router.post('/admin/register', isLoggedin, access.addUserAccess);
 
 module.exports = router;

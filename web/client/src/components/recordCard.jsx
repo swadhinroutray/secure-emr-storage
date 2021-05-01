@@ -13,7 +13,7 @@ import Records from '../contracts/Records.json';
 import { get, post } from '../utils/api';
 import env from '../env.json';
 import crypto from 'crypto-js';
-const Styles = makeStyles({
+const Styles = makeStyles((theme) => ({
 	root: {
 		minWidth: '70vh',
 		marginTop: '2vh',
@@ -29,8 +29,13 @@ const Styles = makeStyles({
 	pos: {
 		marginBottom: 12,
 	},
-});
-
+	paper: {
+		marginTop: theme.spacing(8),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+	},
+}));
 //! Injection Of Web3 Required to download IPFS uploaded document
 const RecordCard = (props) => {
 	const [account, setAccount] = useState('');
@@ -66,6 +71,7 @@ const RecordCard = (props) => {
 
 		return cipherText;
 	};
+
 	async function AESdecryption(hash) {
 		console.log(hash);
 		const bytesText = await crypto.AES.decrypt(hash, env.AES_SECRET_KEY);
@@ -73,14 +79,8 @@ const RecordCard = (props) => {
 
 		return plainText;
 	}
-	useEffect(() => {
-		console.log(web3);
-		console.log(account);
-		console.log('Web3Injected');
-	}, [web3, account]);
+
 	const classes = Styles();
-	// const history = useHistory();
-	// const bull = <span className={classes.bullet}>•</span>;
 	const handleClick = async (e) => {
 		e.preventDefault();
 		const recordID = props.recordID;

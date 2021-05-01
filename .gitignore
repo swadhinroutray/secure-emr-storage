@@ -110,6 +110,6 @@ api/package-lock*
 web/client/package-lock*
 web/client/yarn.lock
 web/client/src/env.json
-
+api/mail/awsconfig.json
 # Docker Constituents
 docker/data

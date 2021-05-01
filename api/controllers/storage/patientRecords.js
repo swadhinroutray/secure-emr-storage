@@ -13,7 +13,6 @@ async function AESencryption(hash) {
 	return cipherText;
 }
 async function AESdecryption(hash) {
-	console.log(hash);
 	const bytesText = await crypto.AES.decrypt(
 		hash,
 		process.env.AES_SECRET_KEY
