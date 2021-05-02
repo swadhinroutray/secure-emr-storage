@@ -60,7 +60,9 @@ router.post('/buffer', isLoggedin, tempHandler.fetchBuffer);
 
 //* Admin controllers
 router.post('/requestaccess', ar.addAdminRequest);
-router.get('/getrequests', isLoggedin, ar.getAdminRequests);
+router.get('/admin/getrequests', isLoggedin, ar.getAdminRequests);
+router.post('/admin/acceptadmin', isLoggedin, ar.acceptAdmin);
+router.post('/admin/rejectadmin', isLoggedin, ar.rejectAdmin);
 
 //* Access Controllers
 router.post('/admin/register', isLoggedin, access.addUserAccess);

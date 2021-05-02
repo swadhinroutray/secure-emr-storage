@@ -12,7 +12,6 @@ aws.config.update({
 	secretAccessKey: aws_json.secretAccessKey,
 	region: aws_json.region,
 });
-console.log(aws_json);
 const transport = nodemailer.createTransport(
 	ses({
 		host: 'email-smtp.ap-south-1.amazonaws.com',
