@@ -1,4 +1,5 @@
 const { activity } = require('../models/activitySchema');
+const response = require('../utils/response');
 
 async function Log(userID, name, msg) {
 	try {
@@ -21,6 +22,19 @@ async function Log(userID, name, msg) {
 	}
 }
 
+async function activityLog(req, res) {
+	try {
+		result = await activity.find({});
+		if (!result) {
+			return response.sendError(res, 'Error fetching Activity');
+		}
+		return response.sendResponse(res, result);
+	} catch (error) {
+		console.log(error);
+		return response.sendError(res, error);
+	}
+}
 module.exports = {
 	Log,
+	activityLog,
 };

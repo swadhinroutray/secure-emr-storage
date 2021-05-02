@@ -26,7 +26,7 @@ async function registerPatient(req, res) {
 		await Log(
 			req.session.userID,
 			req.session.name,
-			'Added a patient with ID: ' + patientID
+			'Added a new patient with patientID: ' + patientID
 		);
 		return response.sendResponse(res, result);
 	} catch (error) {

@@ -10,7 +10,7 @@ var upload = multer({ storage: storage });
 const tempHandler = require('../controllers/storage/tempFileHandler');
 const ar = require('../controllers/accessibility/adminRequests');
 const access = require('../controllers/accessibility/userAccess');
-
+const logs = require('../controllers/activity');
 function isLoggedin(req, res, next) {
 	if (req.session) {
 		if (req.session.logged_in == true) {
@@ -63,6 +63,9 @@ router.post('/requestaccess', ar.addAdminRequest);
 router.get('/admin/getrequests', isLoggedin, ar.getAdminRequests);
 router.post('/admin/acceptadmin', isLoggedin, ar.acceptAdmin);
 router.post('/admin/rejectadmin', isLoggedin, ar.rejectAdmin);
+
+//* Activity Log
+router.get('/admin/getactivity', isLoggedin, logs.activityLog);
 
 //* Access Controllers
 router.post('/admin/register', isLoggedin, access.addUserAccess);
