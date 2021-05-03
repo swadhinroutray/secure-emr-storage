@@ -36,7 +36,7 @@ async function addUserAccess(req, res) {
 			await Log(
 				req.session.userID,
 				req.session.name,
-				'Added user with userID: ' + userID
+				'Added a new user with the userID: ' + userID
 			);
 			return response.sendResponse(
 				res,
@@ -47,7 +47,55 @@ async function addUserAccess(req, res) {
 		response.sendError(res, error);
 	}
 }
+async function revokeAccess(req, res) {
+	try {
+		const userID = req.body.userID;
+		result = await user.findOneAndDelete({
+			userID: userID,
+		});
 
+		if (!result) {
+			return response.sendError(res, 'Error Facilitating your request');
+		}
+		await mail.sendAccessRevoked(result.email, result.name);
+		await Log(
+			req.session.userID,
+			req.session.name,
+			'Removed a user with the userID: ' + userID
+		);
+		return response.sendResponse(res, 'Revoked Access Successfully');
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
+async function getUserFromSameHospital(req, res) {
+	try {
+		const hospital = req.body.hospital;
+		result = await user.find({
+			hospital: hospital,
+		});
+
+		if (!result) {
+			return response.sendError(res, 'Error Facilitating your request');
+		}
+		let array = [];
+		for (let index = 0; index < result.length; index++) {
+			if (result[index].userID == req.session.userID) {
+				continue;
+			}
+			if (result[index].role == 1) {
+				continue;
+			}
+
+			array.push(result[index]);
+		}
+		return response.sendResponse(res, array);
+	} catch (error) {
+		response.sendError(res, error);
+	}
+}
 module.exports = {
 	addUserAccess,
+	revokeAccess,
+	getUserFromSameHospital,
 };

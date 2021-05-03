@@ -51,6 +51,10 @@ const AdminRegisterPage = inject('loginStore')(
 
 		const register = async (e) => {
 			e.preventDefault();
+			if (hospital !== loginStore.profile.hospital) {
+				alert('Cannot add user for other hospital!');
+				return;
+			}
 			const postData = {
 				name: name,
 				email: email,

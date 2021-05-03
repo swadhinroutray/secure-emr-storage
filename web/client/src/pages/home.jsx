@@ -140,10 +140,6 @@ const Home = inject('loginStore')(
 					console.log(hashData);
 				});
 
-			// const data = await web3.eth.getTransaction(hashData);
-			// console.log(data);
-			// const response = await contract.methods.getRecord(recordID).call();
-			// console.log(response);
 			const recordData = {
 				patientID: patientID,
 				recordID: recordID,
@@ -158,8 +154,6 @@ const Home = inject('loginStore')(
 			} else {
 				console.log('Record Addition failed :(');
 			}
-			// Update state with the result.
-			// setStorageValue(response);
 		};
 		return loginStore.profileSet ? (
 			<div>

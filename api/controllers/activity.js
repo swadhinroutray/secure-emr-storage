@@ -24,7 +24,9 @@ async function Log(userID, name, msg) {
 
 async function activityLog(req, res) {
 	try {
-		result = await activity.find({});
+		result = await activity.find({}).sort({
+			timestamp: -1,
+		});
 		if (!result) {
 			return response.sendError(res, 'Error fetching Activity');
 		}

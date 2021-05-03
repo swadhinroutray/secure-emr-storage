@@ -53,6 +53,7 @@ async function Login(req, res) {
 					req.session.name = result.name;
 					req.session.logged_in = true;
 					req.session.userID = result.userID;
+					req.session.hospital = result.hospital;
 					// console.log(req.session);
 					req.session.save(() => {
 						response.sendResponse(res, result);

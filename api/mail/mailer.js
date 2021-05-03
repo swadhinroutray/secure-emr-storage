@@ -118,9 +118,39 @@ async function sendAdminAccepted(email, name, pwd) {
 		console.log(error);
 	}
 }
-
+async function sendAccessRevoked(email, name) {
+	try {
+		const html = `
+        Hello ${name}<br>We are sorry to inform you that your access to Secure EMR Storage has been <b>revoked</b><br>
+		In order to regain access, please get in touch with your hospital Admin.
+		<br>
+        <br>
+        <br>
+        Regards, <br>
+        EMR Admin
+        </br>    
+        `;
+		const message = {
+			from: 'EMR ADMIN<swadhin.routray@gmail.com>',
+			to: email,
+			subject: 'EMR Access Revoked: ' + name,
+			html,
+		};
+		await transport.sendMail(message, (err, info) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log('Message sent' + info);
+				return;
+			}
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
 module.exports = {
 	sendUserCredentials,
 	sendAdminRejected,
 	sendAdminAccepted,
+	sendAccessRevoked,
 };

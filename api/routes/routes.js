@@ -69,5 +69,7 @@ router.get('/admin/getactivity', isLoggedin, logs.activityLog);
 
 //* Access Controllers
 router.post('/admin/register', isLoggedin, access.addUserAccess);
+router.post('/admin/revoke', isLoggedin, access.revokeAccess);
+router.post('/admin/users', isLoggedin, access.getUserFromSameHospital);
 
 module.exports = router;
