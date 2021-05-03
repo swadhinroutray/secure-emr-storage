@@ -70,7 +70,7 @@ async function sendAdminRejected(email, name) {
 		const message = {
 			from: 'EMR ADMIN<swadhin.routray@gmail.com>',
 			to: email,
-			subject: 'User Credentials: ' + name,
+			subject: 'Admin Rejection: ' + name,
 			html,
 		};
 		await transport.sendMail(message, (err, info) => {
