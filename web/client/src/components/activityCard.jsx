@@ -12,6 +12,7 @@ const Styles = makeStyles({
 		maxWidth: '80vh',
 		marginTop: '2vh',
 		marginBottom: '0.2vh',
+		minWidth: '70vh',
 	},
 	bullet: {
 		display: 'inline-block',
