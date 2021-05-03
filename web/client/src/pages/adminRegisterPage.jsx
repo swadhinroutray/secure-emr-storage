@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Link, Redirect } from 'react-router-dom';
 import {
 	TextField,
 	Button,
 	Avatar,
 	CssBaseline,
-	Box,
 	Typography,
 	Container,
 } from '@material-ui/core';
@@ -14,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AdminNavbar from '../components/adminNavbar';
-import { get, post } from '../utils/api';
+import { post } from '../utils/api';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {

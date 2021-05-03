@@ -65,8 +65,8 @@ const LoginForm = inject('loginStore')(
 		}, [loginStore, primaryCheck]);
 		const classes = useStyles();
 
-		return loginStore.loggedIn == true ? (
-			loginStore.profile.role == 1 ? (
+		return loginStore.loggedIn === true ? (
+			loginStore.profile.role === 1 ? (
 				<Redirect to="/admin/home" />
 			) : (
 				<Redirect to="/home" />

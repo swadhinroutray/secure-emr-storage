@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import AdminNavbar from '../components/adminNavbar';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import {
-	TextField,
-	Button,
-	Avatar,
-	CssBaseline,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
+import { CssBaseline, Typography, Container } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
-import PatientCard from '../components/patientCard';
 import { get } from '../utils/api';
 import ActivityCard from '../components/activityCard';
 
@@ -105,7 +95,7 @@ const AdminActivityPage = inject('loginStore')(
 									></Loader>
 								</div>
 							</Container>
-						) : activity.data.length == 0 ? (
+						) : activity.data.length === 0 ? (
 							<Container
 								component="main"
 								maxWidth="m"

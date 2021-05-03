@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import AdminNavbar from '../components/adminNavbar';
-import {
-	TextField,
-	Button,
-	CssBaseline,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
+import { CssBaseline, Typography, Container } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
 import { post } from '../utils/api';
@@ -101,7 +94,7 @@ const AdminHome = inject('loginStore')(
 								></Loader>
 							</div>
 						</Container>
-					) : users.data.length == 0 ? (
+					) : users.data.length === 0 ? (
 						<Container
 							component="main"
 							maxWidth="m"

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { inject, observer, Provider } from 'mobx-react';
 import { Switch } from 'react-router';
 import { Route } from 'react-router-dom';
 import Web3Page from '../pages/web3Page';
 import LoginForm from '../pages/loginPage';
-import loginStore from '../models/loginModel';
 import userStore from '../models/userModel';
 import patientStore from '../models/patientModel';
 import AdminHome from '../pages/adminHome.jsx';
@@ -21,15 +20,7 @@ import AdminRegisterPage from '../pages/adminRegisterPage';
 import AdminRequestsPage from '../pages/adminRequestsPage';
 import AdminActivityPage from '../pages/adminActivityPage';
 
-import {
-	TextField,
-	Button,
-	Avatar,
-	CssBaseline,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
+import { CssBaseline, Container } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({

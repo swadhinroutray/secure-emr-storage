@@ -130,7 +130,7 @@ class loginModel {
 }
 
 const loginStore = new loginModel();
-var disposer = autorun(() => console.log(loginStore.loggedIn));
+autorun(() => console.log(loginStore.loggedIn));
 
 export default loginStore;
 const loginValidator = {

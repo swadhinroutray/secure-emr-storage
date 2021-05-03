@@ -10,7 +10,7 @@ import Web3 from 'web3';
 
 import Loader from 'react-loader-spinner';
 import Records from '../contracts/Records.json';
-import { get, post } from '../utils/api';
+import { post } from '../utils/api';
 import env from '../env.json';
 import crypto from 'crypto-js';
 const Styles = makeStyles((theme) => ({

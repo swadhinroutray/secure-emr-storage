@@ -149,7 +149,7 @@ const Home = inject('loginStore')(
 				hospital: hospitalName,
 			};
 			const response = post('/api/addpatientrecord', recordData);
-			if (response.success == true) {
+			if (response.success === true) {
 				console.log('Added Record successfully');
 			} else {
 				console.log('Record Addition failed :(');

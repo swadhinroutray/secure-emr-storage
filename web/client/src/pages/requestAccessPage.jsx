@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { inject, observer } from 'mobx-react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
 	TextField,
 	Button,
@@ -12,9 +11,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import { get, post } from '../utils/api';
-import { toast } from 'react-toastify';
-import Navbar from '../components/Navbar';
+import { post } from '../utils/api';
 
 function Copyright() {
 	return (

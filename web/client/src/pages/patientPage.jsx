@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import Navbar from '../components/Navbar';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import {
-	TextField,
-	Button,
-	Avatar,
-	CssBaseline,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
+import { CssBaseline, Typography, Container } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 import { makeStyles } from '@material-ui/core/styles';
 import PatientCard from '../components/patientCard';

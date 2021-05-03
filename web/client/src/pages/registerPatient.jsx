@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { inject, observer } from 'mobx-react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
-	TextField,
 	Button,
 	Avatar,
 	CssBaseline,
 	Box,
 	Typography,
 	Container,
+	TextField,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import { get, post } from '../utils/api';
+import { post } from '../utils/api';
 import { toast } from 'react-toastify';
 import Navbar from '../components/Navbar';
 

@@ -62,7 +62,7 @@ const PatientProfile = inject(
 
 		const renderCards = (records) => {
 			const indents = [];
-			if (records.length == 0) {
+			if (records.length === 0) {
 				return <Typography>No Records Found</Typography>;
 			}
 			for (let index = 0; index < records.length; index++) {
