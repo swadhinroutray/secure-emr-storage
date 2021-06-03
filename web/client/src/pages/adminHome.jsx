@@ -46,7 +46,7 @@ const AdminHome = inject('loginStore')(
 				hospital: loginStore.profile.hospital,
 			};
 			post('/api/admin/users', postData).then((data) => {
-				console.log(data);
+				// console.log(data);
 				setUsers(data);
 				setLoading(false);
 			});

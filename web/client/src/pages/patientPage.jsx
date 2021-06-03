@@ -46,14 +46,14 @@ const Patients = inject('loginStore')(
 			get('/api/patientlist').then((data) => {
 				setPatients(data);
 				setLoading(false);
-				console.log(data);
+				// console.log(data);
 			});
 		}, []);
 
 		const renderCards = (patients) => {
 			const data = patients.data;
 
-			console.log(data[0]);
+			// console.log(data[0]);
 			const indents = [];
 
 			for (let index = 0; index < data.length; index++) {

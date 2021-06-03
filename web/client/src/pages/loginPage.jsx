@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginForm = inject('loginStore')(
 	observer(({ loginStore }) => {
-		console.log(loginStore.loggedIn);
+		// console.log(loginStore.loggedIn);
 		const [primaryCheck, setPrimaryCheck] = useState(false);
 		useEffect(() => {
 			if (!primaryCheck) {

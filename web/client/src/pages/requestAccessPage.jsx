@@ -65,7 +65,7 @@ const RequestAccessPage = () => {
 			hospital: hospital,
 		};
 		post(`/api/requestaccess`, postData).then((res) => {
-			console.log(res);
+			// console.log(res);
 
 			if (res.success) {
 				alert(res.data);

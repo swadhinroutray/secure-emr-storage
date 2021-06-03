@@ -10,6 +10,9 @@
 -   [x] Any sensitive communication is channelled via AES encryption technique
 -   [x] Creation of private Admin routes
 
+-   [x] Segregation of data/ records using hospital name/ Added a registered Hospital field to display
+-   [x] DICOM Viewer for NPM / Store DICOM images which can be viewed
+
 ### Server
 
 ##### Storage
@@ -30,9 +33,9 @@
 -   [x] Role Accessibility for Admins
 -   [x] Registeration of doctors only by Admin
 -   [x] Request for access from other hosital
--   [ ] Approval of request
--   [ ] Add and remove doctors/Nurses from the DB
+-   [x] Approval of request
+-   [x] Add and remove doctors/Nurses from the DB
 -   [x] Activity log creation to keep track of actions
--   [ ] Fetching of activity and rendering as cards
--   [ ] Accept Reject format to run
+-   [x] Fetching of activity and rendering as cards
+-   [x] Accept Reject format to run
 -   [x] Mailing system to send user credentials

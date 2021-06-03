@@ -12,6 +12,7 @@
     "fs-extra": "^9.1.0",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^49.0.4",
+    "js-file-download": "^0.4.12",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",
     "path": "^0.12.7",

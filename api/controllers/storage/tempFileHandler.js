@@ -9,7 +9,7 @@ async function uploadFileToTempDirectory(req, res) {
 		const file = req.file;
 		const uploadPath =
 			process.env.UPLOAD_DIR_PATH + '/' + file.originalname;
-		console.log(uploadPath);
+		// console.log(uploadPath);
 		await fs.writeFile(uploadPath, file.buffer);
 		await ipfs.add(file.buffer, function (err, file) {
 			if (err) {
@@ -35,12 +35,12 @@ async function deleteTempFile(req, res) {
 async function fetchBuffer(req, res) {
 	try {
 		const fileName = req.body.filename;
-		console.log(fileName);
+		// console.log(fileName);
 		const buffer = await fs.readFileSync(
 			process.env.UPLOAD_DIR_PATH + '/' + fileName
 		);
 
-		console.log(buffer);
+		// console.log(buffer);
 		response.sendResponse(res, buffer);
 	} catch (error) {
 		response.sendError(res, error);

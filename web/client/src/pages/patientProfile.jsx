@@ -55,6 +55,7 @@ const PatientProfile = inject(
 		useEffect(() => {
 			get('/api/records/' + patientID).then((res) => {
 				setRecords(res.data);
+				console.log(res.data);
 			});
 			setCardsLoaded(true);
 			setLoading(false);
@@ -62,6 +63,7 @@ const PatientProfile = inject(
 
 		const renderCards = (records) => {
 			const indents = [];
+			console.log(records);
 			if (records.length === 0) {
 				return <Typography>No Records Found</Typography>;
 			}
@@ -70,6 +72,7 @@ const PatientProfile = inject(
 					<RecordCard
 						recordID={records[index].recordID}
 						recordName={records[index].recordName}
+						recordHospital={records[index].hospitalName}
 					/>
 				);
 			}
@@ -96,9 +99,9 @@ const PatientProfile = inject(
 				<Container component="main" maxWidth="s" alignItems="center">
 					<CssBaseline />
 					<div className={classes.paper}>
-						{/* <h3>Patient Name: {patientStore.name}</h3>
+						{/* <h3>Patient Name: {records}</h3> */}
 
-						<h5>Patient ID: {patientStore.patientID}</h5> */}
+						{/* <h5>Patient ID: {patientStore.patientID}</h5> */}
 						{cardsLoaded ? (
 							renderCards(records)
 						) : (

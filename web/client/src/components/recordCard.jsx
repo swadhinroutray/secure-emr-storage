@@ -13,6 +13,7 @@ import Records from '../contracts/Records.json';
 import { post } from '../utils/api';
 import env from '../env.json';
 import crypto from 'crypto-js';
+import fileDownload from 'js-file-download';
 const Styles = makeStyles((theme) => ({
 	root: {
 		minWidth: '70vh',
@@ -73,7 +74,7 @@ const RecordCard = (props) => {
 	};
 
 	async function AESdecryption(hash) {
-		console.log(hash);
+		// console.log(hash);
 		const bytesText = await crypto.AES.decrypt(hash, env.AES_SECRET_KEY);
 		const plainText = bytesText.toString(crypto.enc.Utf8);
 
@@ -90,10 +91,18 @@ const RecordCard = (props) => {
 		const downloadData = {
 			hash: encryptedIPFShash,
 		};
-		console.log(encryptedIPFShash);
+		// console.log(encryptedIPFShash);
 		const response = await post('/api/download', downloadData);
 		const url = await AESdecryption(response.data);
+
 		window.open(url, '_blank');
+		// await fetch(url, {
+		// 	// responseType: 'blob',
+		// }).then((res) => {
+		// 	console.log(res.data);
+		// 	fileDownload(res.data, props.recordName);
+		// });
+		// fileDownload(url, props.recordName);
 	};
 	return loader ? (
 		<Container component="main" maxWidth="s" alignItems="center">
@@ -114,6 +123,9 @@ const RecordCard = (props) => {
 				</Typography>
 				<Typography variant="h5" component="h2">
 					Record Name: {props.recordName}
+				</Typography>
+				<Typography variant="h6" component="h4">
+					Registered at Hospital: {props.recordHospital}
 				</Typography>
 			</CardContent>
 			<CardActions>

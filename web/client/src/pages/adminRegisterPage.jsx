@@ -67,10 +67,6 @@ const AdminRegisterPage = inject('loginStore')(
 					alert('Error in registering user');
 				}
 			});
-			setEmail('');
-			setContact('');
-			setName('');
-			setRole(0);
 		};
 
 		return (

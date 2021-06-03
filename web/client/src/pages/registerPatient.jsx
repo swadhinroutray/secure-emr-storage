@@ -67,7 +67,7 @@ const RegisterPatitentForm = () => {
 			bloodGroup: BG,
 		};
 		post(`/api/registerpatient`, postData).then((res) => {
-			console.log(res);
+			// console.log(res);
 
 			if (res.success) {
 				toast('Registered Successfully', {

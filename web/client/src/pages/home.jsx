@@ -91,14 +91,14 @@ const Home = inject('loginStore')(
 			get('/api/patientlist').then((data) => {
 				const patientData = data.data;
 				setPatients(patientData);
-				console.log(data);
+				// console.log(data);
 				setSearchLoader(false);
 			});
 		}, []);
 
 		useEffect(() => {
-			console.log(web3);
-			console.log(account);
+			// console.log(web3);
+			// console.log(account);
 			console.log('Web3Injected');
 		}, [web3, account]);
 
@@ -119,7 +119,7 @@ const Home = inject('loginStore')(
 			setFileName(file.name);
 
 			const fileBuffer = await postFormData('/api/upload', file);
-			console.log(fileBuffer.data.data);
+			// console.log(fileBuffer.data.data);
 			setIpfsHash(fileBuffer.data.data);
 			const removeData = {
 				filename: file.name,
@@ -135,9 +135,9 @@ const Home = inject('loginStore')(
 				.createRecord(recordID, ipfsHash)
 				.send({ from: account })
 				.on('transactionHash', function (hash) {
-					console.log(hash);
+					// console.log(hash);
 					hashData = hash;
-					console.log(hashData);
+					// console.log(hashData);
 				});
 
 			const recordData = {
@@ -149,6 +149,7 @@ const Home = inject('loginStore')(
 				hospital: hospitalName,
 			};
 			const response = post('/api/addpatientrecord', recordData);
+			// console.log(response.success);
 			if (response.success === true) {
 				console.log('Added Record successfully');
 			} else {

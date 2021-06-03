@@ -13,7 +13,7 @@ async function addUserAccess(req, res) {
 		const contact = req.body.contact;
 		const email = req.body.email;
 		const pwd = uuid();
-		console.log(pwd);
+		// console.log(pwd);
 		const salt = await bcrypt.genSalt(parseInt(process.env.SALT_FACTOR));
 
 		bcrypt.hash(pwd, salt).then(async (hash) => {

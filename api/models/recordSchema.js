@@ -22,6 +22,10 @@ const recordSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	hospitalName: {
+		type: String,
+		required: true,
+	},
 });
 
 const record = mongoose.model('records', recordSchema);

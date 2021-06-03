@@ -31,7 +31,7 @@ const PatientCard = (props) => {
 	// const bull = <span className={classes.bullet}>•</span>;
 	const handleClick = () => {
 		const link = '/' + props.patientID;
-		console.log(link);
+		// console.log(link);
 
 		history.push(link);
 	};

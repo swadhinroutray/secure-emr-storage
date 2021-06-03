@@ -113,3 +113,6 @@ web/client/src/env.json
 api/mail/awsconfig.json
 # Docker Constituents
 docker/data
+
+SecureEMRStorage.tex
+db.dump

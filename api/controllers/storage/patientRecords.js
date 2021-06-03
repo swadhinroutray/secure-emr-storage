@@ -39,6 +39,7 @@ async function addPatientRecord(req, res) {
 			transactionHash: encryptedHash,
 			hospitalName: hospital,
 		});
+		// console.log(newRecord);
 
 		result = await newRecord.save();
 		if (!result) {
@@ -85,9 +86,15 @@ async function getPatientRecords(req, res) {
 	try {
 		const patientID = req.params.patientID;
 
-		result = await record.find({
-			patientID: patientID,
-		});
+		result = await record.find(
+			{
+				patientID: patientID,
+			},
+			{
+				transactionHash: 0,
+			}
+		);
+		// console.log(result);
 		if (!result) {
 			return response.sendError(res, 'An error Occured');
 		}
