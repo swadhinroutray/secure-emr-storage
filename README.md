@@ -1,10 +1,12 @@
-# Secure Electronic Medical Record storage on IPFS
+# Secure Storage of Electronic Medical Records(EMR) on Interplanetary File System(IPFS) Using Cloud Storage and Blockchain Ecosystem
 
-<hr>
+<p>Electronic Medical Records(EMR) are an important aspect of any healthcare system. The effective and secure management of the same is an integral task. With new and upcoming technologies, there have been various new mechanisms to securely store patient information. It is a time critical task to retrieve and refer to a patient’s medical record for effective and rapid treatment. Due to the large number of Electronic Medical Records(EMR) owing to the large healthcare sector, there exists high risk of possible intrusions. It is also one of the most targeted sectors for personal data theft. This paper proposes a secure system for storage and access of these Electronic Medical Records(EMR) taking into consideration the confidentiality, integrity and availability of these records. The paper proposes a system for access of a centralised storage system for healthcare institutions around the globe, taking into account the secure features of a decentralised Interplanetary File System(IPFS). The storage system utilises the Blockchain Ecosystem for storing sensitive data. This system also implements a Role Based Access Control(RBAC) system for access to the storage. The paper shows implementation of the system through thorough breakdown of the system. </p>
 
-<p>Secure EMR(Electronic Medical Record) storage on an IPFS (Interplanetary File System) while maintaining a database for secure handling of data using Ethereum Blockchain nodes, Infura IPFS nodes, Ganache as ethereum account providers & metamask as ether transaction agent and Truffle framework for client side development using the web3 package. </p>
+You can check out the full paper [here](https://ieeexplore.ieee.org/abstract/document/9616690)
 
-## To get started:
+## Local setup for running the project
+
+### To get started:
 
 ```sh
 $ cd secure-emr-storage
@@ -23,18 +25,16 @@ $ cp .env.example .env   # Copy env
 ./Taskfile.sh     # (default) starts the project in dev mode
 ```
 
----
+<hr>
 
-### API Specifications:
-
--   API is going to be an agent for secure isolated storage of cryptographic hashes.
--   The API is going to be running in an isolated environemnt, i.e, within a docker container, alongside the Redis and MongoDB containers.
--   These containers interact with one another using [networks](https://docs.docker.com/compose/networking/), that has been defined in the docker-compose configuration files.
--   Architecture of API: REST, implemented using Node.js and Express.js (Framework for Node.js). Communicates with the client using HTTP/HTTPS headers and cookies.
--   Redis sessions help store user sessions for secure communication and data updation.
-
-### Sequence Diagrams For User IPFS Communication (TODO)
-
--   **User upload Scenario:**
-
--   **User Download Scenario:**
+### To cite the paper
+```
+@INPROCEEDINGS{9616690,  author={Routray, Swadhin and Ganiga, Raghavendra},  
+booktitle={2021 Fourth International Conference on Electrical, Computer and Communication Technologies (ICECCT)},   
+title={Secure Storage of Electronic Medical Records(EMR) on Interplanetary File System(IPFS) Using Cloud Storage and Blockchain Ecosystem},   
+year={2021},  
+volume={},  
+number={},  
+pages={1-9},  
+doi={10.1109/ICECCT52121.2021.9616690}}
+```
